@@ -22,7 +22,7 @@ fun registerCommands() {
 
     plugin.getCommand("reload_config")?.setExecutor { sender, _, _, _ ->
         plugin.reloadConfig()
-        sendMessageOrActionBar(sender, "Config reloaded")
+        sendMessageOrActionBar(sender, "Файл конфигурации перезагружен")
 
         return@setExecutor true
     }
@@ -34,6 +34,7 @@ fun registerCommands() {
             "orange" to ::presetOrange,
             "blue" to ::presetBlue,
             "purple" to ::presetPurple,
+            "purpleandgreen" to ::presetPurpleAndGreen,
 
             "big" to ::presetBig,
 
@@ -48,7 +49,7 @@ fun registerCommands() {
             val presetFunction = presets[preset] ?: return@setExecutor false
 
             presetFunction()
-            sendMessageOrActionBar(sender, "Preset $preset applied")
+            sendMessageOrActionBar(sender, "Шаблон $preset применен")
             SkyTorch.instance.writeAndSaveConfig()
 
             return@setExecutor true
@@ -67,7 +68,7 @@ fun registerCommands() {
             val scale = args.getOrNull(0)?.toDoubleOrNull() ?: return@setExecutor false
 
             presetSetScale(scale)
-            sendMessageOrActionBar(sender, "Scale set to $scale")
+            sendMessageOrActionBar(sender, "Масштаб установлен на $scale")
 
             return@setExecutor true
         }

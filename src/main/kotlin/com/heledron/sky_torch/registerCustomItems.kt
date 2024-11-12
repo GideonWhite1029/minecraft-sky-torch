@@ -19,7 +19,7 @@ fun registerCustomItems() {
         val ray = raycastGround(player.eyeLocation, player.eyeLocation.direction, 255.0)
         val location = ray?.hitPosition?.toLocation(player.world)
         if (location == null) {
-            sendActionBar(player, "Could not place target")
+            sendActionBar(player, "Не удалось разместить цель")
         }
         return location
     }

@@ -24,6 +24,11 @@ fun presetPurple() {
     AppState.options.burn.palette = BlockPalette.PURPLE
 }
 
+fun presetPurpleAndGreen() {
+    AppState.options.burnWave.palette = BlockPalette.PURPLEANDGREEN
+    AppState.options.burn.palette = BlockPalette.PURPLEANDGREEN
+}
+
 fun presetEnableFlicker() {
     AppState.options.glowWidthMin = default.glowWidthMin
 }

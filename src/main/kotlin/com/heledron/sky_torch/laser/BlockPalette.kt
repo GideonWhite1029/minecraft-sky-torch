@@ -13,6 +13,7 @@ enum class BlockPalette(
     ORANGE(burn = BurnPalette.orange),
     BLUE(burn = BurnPalette.blue),
     PURPLE(burn = BurnPalette.purple),
+    PURPLEANDGREEN(burn = BurnPalette.purpleandgreen),
     GLASS_ONLY(burn = BurnPalette().apply { burnWave = listOf(dataOf(Material.ORANGE_STAINED_GLASS)) }),
     ORANGE_WITHOUT_TRAIL(burn = BurnPalette().apply { burnWave = this.burnWave.map { i -> listOf(i[0])} }),
     ;
@@ -52,6 +53,26 @@ class BurnPalette {
             ).map { listOf(it, it, it) + burnWaveTrail }.repeat(2)
 
             val blocks = listOf(Material.PURPLE_CONCRETE, Material.AMETHYST_BLOCK, Material.CRYING_OBSIDIAN)
+            preBurn = orange.preBurn.repeat(4 * blocks.size) + blocks.map { it.createBlockData() }
+            midBurn = orange.midBurn.repeat(4 * blocks.size) + blocks.map { it.createBlockData() }
+        }
+        val purpleandgreen = BurnPalette().apply {
+            burnWave = orange.burnWave + dataOf(
+                *repeat(2, Material.PURPLE_STAINED_GLASS),
+                *repeat(2, Material.CHORUS_PLANT),
+                *repeat(2, Material.AMETHYST_BLOCK),
+                *repeat(2, Material.GREEN_STAINED_GLASS),
+                *repeat(2, Material.GREEN_CONCRETE),
+                *repeat(2, Material.LIME_STAINED_GLASS),
+                *repeat(2, Material.LIME_CONCRETE),
+                Material.PURPLE_TERRACOTTA,
+                Material.PURPLE_CONCRETE,
+                Material.GREEN_CONCRETE,
+                Material.GREEN_TERRACOTTA,
+                Material.BUBBLE_CORAL_BLOCK,
+            ).map { listOf(it, it, it) + burnWaveTrail }.repeat(2)
+
+            val blocks = listOf(Material.PURPLE_CONCRETE, Material.AMETHYST_BLOCK, Material.GREEN_TERRACOTTA, Material.CRYING_OBSIDIAN)
             preBurn = orange.preBurn.repeat(4 * blocks.size) + blocks.map { it.createBlockData() }
             midBurn = orange.midBurn.repeat(4 * blocks.size) + blocks.map { it.createBlockData() }
         }
