@@ -42,7 +42,7 @@ class CameraShake(
         prevPitch = pitch
         prevYaw = yaw
 
-        val command = String.format("execute as %s at @s run tp @s ~ ~ ~ ~%.3f ~%.3f", player.uniqueId, relativePitch, relativeYaw)
+        val command = String.format("execute as %s at @s run minecraft:tp @s ~ ~ ~ ~%.3f ~%.3f", player.uniqueId, relativePitch, relativeYaw)
         runCommandSilently(command)
     }
 
