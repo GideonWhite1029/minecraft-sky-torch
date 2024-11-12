@@ -107,5 +107,14 @@ private fun spawnBurnCloud(placement: BurnWavePlacement, options: BurnWaveOption
 
             burn.burn(block = block, renderLocation = renderLocation, heat = heat)
         }
+
+        for (entity in location.world!!.getNearbyEntities(location, size * 1.5, size * 1.5, size * 1.5)) {
+            if (entity is org.bukkit.entity.Player) {
+                entity.damage(5.0)
+            }
+            if (entity is org.bukkit.entity.LivingEntity) {
+                entity.fireTicks = 200
+            }
+        }
     }
 }
